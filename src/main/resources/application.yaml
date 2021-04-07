@@ -1,10 +1,10 @@
 spring:
     datasource:
-        url: jdbc:mysql://172.17.0.2:3306/db_example
-        username: springuser
-        password: ThePassword
+        url: ${SPRING_MYSQL_URL:jdbc:mysql://172.17.0.2:3306/db_example}
+        username: ${SPRING_MYSQL_USER:user}
+        password: ${SPRING_MYSQL_PASSWORD:password}
     jpa:
         hibernate:
             ddl-auto: update
 server:
-    port: 8080
+    port: ${SPRING_MYSQL_PORT:8080}

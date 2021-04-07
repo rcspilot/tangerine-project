@@ -1,0 +1,6 @@
+kubectl create secret generic db-credential \
+--from-literal=user=springuser \
+--from-literal=password=ThePassword
+
+kubectl create configmap db-path \
+--from-literal db-url=jdbc:mysql://mysql-service.default.svc.cluster.local:3306/db_example
