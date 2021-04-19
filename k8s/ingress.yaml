@@ -1,0 +1,12 @@
+---
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "app-ingress"
+  namespace: "default"
+spec:
+  backend:
+    serviceName: "spring-app-service"
+    servicePort: 80
+  tls:
+  - secretName: "ssl-cert"

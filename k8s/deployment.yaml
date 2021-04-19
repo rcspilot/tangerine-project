@@ -1,0 +1,39 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "spring-app"
+  labels:
+    app: "spring-app"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "spring-app"      
+  template:
+    metadata:
+      labels:
+        app: "spring-app"
+    spec:
+      containers:
+      - name: "spring-app"
+        image: "gcr.io/tg-ktb-devops-workshop/spring"
+        env:
+          - name: SPRING_PORT
+            value: '8081'
+          - name: SPRING_MYSQL_URL
+            valueFrom:
+              configMapKeyRef:
+                name: db-path
+                key: db-url
+          - name: SPRING_MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-credential
+                key: user
+          - name: SPRING_MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-credential
+                key: password
+            
