@@ -12,9 +12,9 @@ pipeline {
                 echo 'Begin Push'
             }
         }
-        stage ('Invoke_GitHook') {
+        stage ('Invoke_JobH') {
             steps {
-                build job: 'GitHook', parameters: [
+                build job: 'Job_H', parameters: [
                 string(name: 'param1', value: "value1")
                 ]
             }
