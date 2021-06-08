@@ -18,16 +18,17 @@ pipeline {
                     API1_Deployment: {
                         echo "Deploy Api #1"
                         build job: 'Job_1'
-                        sleep 3
+                        sleep 5
                         },
                     API2_Deployment: {
                         echo "Deploy Api #2"
                         build job: 'Job_2'
-                        sleep 7
+                        sleep 5
                         },
                     API3_Deployment: {
                         echo "Deploy Api #3"
                         build job: 'Job_3'
+                        sleep 5
                         }
                 )
             }
