@@ -33,9 +33,9 @@ pipeline {
                 )
             }
         }
-        stage('Svc YAML') {
+        stage('Service YAML') {
             steps {
-                echo 'Starting Deploying'
+                echo 'Starting Deploying Service'
             }
         }
     }
