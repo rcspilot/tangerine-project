@@ -2,22 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-        stage('Build') {
+        stage('Build DockerFile') {
             steps {
                 echo 'Starting Build'
             }
         }
-        stage('Push') {
+        stage('Push GCP') {
             steps {
                 echo 'Begin Push'
             }
         }
-        stage('Deploy') {
+        stage('Apply k8s YAML ') {
+            steps {
+                parallel(
+                    API1_Deployment: {
+                        echo "Deploy Api #1"
+                        sleep 10
+                        },
+                    API2_Deployment: {
+                        echo "Deploy Api #2"
+                        sleep 10
+                        }
+
+                )
+            }
+        }
+        stage('Service YAML') {
             steps {
                 echo 'Starting Deploy'
             }
