@@ -12,16 +12,23 @@ pipeline {
                 echo 'Begin Push'
             }
         }
+        stage ('Invoke_GitHook') {
+            steps {
+                build job: 'GitHook', parameters: [
+                string(name: 'param1', value: "value1")
+                ]
+            }
+        }
         stage('Apply k8s YAML ') {
             steps {
                 parallel(
                     API1_Deployment: {
                         echo "Deploy Api #1"
-                        sleep 10
+                        sleep 5
                         },
                     API2_Deployment: {
                         echo "Deploy Api #2"
-                        sleep 10
+                        sleep 5
                         }
 
                 )
