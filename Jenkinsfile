@@ -12,25 +12,21 @@ pipeline {
                 echo 'Begin Push'
             }
         }
-        stage ('Invoke_JobH') {
-            steps {
-                build job: 'Job_H', parameters: [
-                string(name: 'param1', value: "value1")
-                ]
-            }
-        }
         stage('Apply k8s YAML ') {
             steps {
                 parallel(
                     API1_Deployment: {
                         echo "Deploy Api #1"
-                        sleep 5
+                        build job: 'Job_1'
                         },
                     API2_Deployment: {
                         echo "Deploy Api #2"
-                        sleep 5
+                        build job: 'Job_2'
                         }
-
+                    API3_Deployment: {
+                        echo "Deploy Api #3"
+                        build job: 'Job_H'
+                        }
                 )
             }
         }
