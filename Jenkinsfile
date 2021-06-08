@@ -33,9 +33,9 @@ pipeline {
                 )
             }
         }
-        stage('Service YAML') {
+        stage('Dev Branch') {
             steps {
-                echo 'Starting Deploying Service 2'
+                echo 'Starting Deploying Service '
             }
         }
     }
