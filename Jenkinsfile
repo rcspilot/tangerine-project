@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Service YAML') {
             steps {
-                echo 'Starting Deploying Service'
+                echo 'Starting Deploying Service 2'
             }
         }
     }
